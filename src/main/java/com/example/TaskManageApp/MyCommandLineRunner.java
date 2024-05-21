@@ -22,9 +22,9 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
 //		userService.encodeExistingUserPasswords();
 		
-		taskRepository.save(new Task());
-		taskRepository.save(new Task());
-		taskRepository.save(new Task());
+		taskRepository.save(new Task("task1"));
+		taskRepository.save(new Task("task2"));
+		taskRepository.save(new Task("task3"));
 		
 //		List<Task> taskList = taskRepository.findAll();
 		

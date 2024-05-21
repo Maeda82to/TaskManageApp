@@ -30,7 +30,7 @@ public class Task {
 	
 	private LocalDateTime updatedAt = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
 	
-	private String category = "未選択";
+	private String category = "";
 	private TaskStatus status = TaskStatus.NOT_STARTED;
 	
 	private TaskPriority priority = TaskPriority.LOW;
@@ -56,6 +56,12 @@ public class Task {
 		this.priority = form.getPriority();
 		this.category = form.getCategory();
 		
+	}
+
+
+	public Task(String taskName) {
+		// TODO 自動生成されたコンストラクター・スタブ
+		setTaskName(taskName);
 	}
 //	//nameとmemoを受け取るコンストラクタ
 //	public Task(TaskFormat form) {

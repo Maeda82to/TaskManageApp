@@ -12,40 +12,49 @@
     <input type="hidden" name="taskId" th:value="${taskId}"> <!-- taskIdをhiddenフィールドで送信 -->
 	<div>
        <label for="taskName">タスク</label>
-       <input type="text" id="name" name="taskName" required>			
+       <input type="text" id="taskName" name="taskName" th:value="${task != null ? task.taskName : ''}"required>			
 	</div>
  
 	<div>			
        <label for="taskMemo">メモ</label>
-       <textarea id="memo" name="taskMemo"></textarea>
+       <textarea id="taskMemo" name="taskMemo" th:text="${task != null ? task.taskMemo : ''}"></textarea>
 	</div>
 
 	<div>
 		<label for="deadline">締め切り</label>
-		<input type="date" id="deadline" name="deadline" required>
+		<input type="date" id="deadline" name="deadline" th:value="${task != null ? task.deadline : ''}" required>
 	</div>
  
 	<div>
 		<label for="status">Status</label>
+<!--		<select id="status" name="status" required>-->
+<!--			<option value="NOT_STARTED" th:selected="${task.status == 'NOT_STARTED'}">NOT_STARTED</option>-->
+<!--			<option value="IN_PROGRESS" th:selected="${task.status == 'IN_PROGRESS'}">IN_PROGRESS</option>-->
+<!--			<option value="COMPLETED" th:selected="${task.status == 'COMPLETED'}">COMPLETED</option>-->
+<!--		</select>-->
+		
 		<select id="status" name="status" required>
-			<option value="NOT_STARTED">NOT_STARTED</option>
-			<option value="IN_PROGRESS">IN_PROGRESS</option>
-			<option value="COMPLETED">COMPLETED</option>
+		    <option value="NOT_STARTED" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).NOT_STARTED}">NOT_STARTED</option>
+		    <option value="IN_PROGRESS" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).IN_PROGRESS}">IN_PROGRESS</option>
+		    <option value="COMPLETED" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).COMPLETED}">COMPLETED</option>
 		</select>
+
+
+
 	</div>
 	
 	<div>
         <label for="priority">Priority:</label>
         <select id="priority" name="priority" required>
-            <option value="LOW">LOW</option>
-            <option value="MEDIUM">MEDIUM</option>
-            <option value="HIGH">HIGH</option>
+            <option value="LOW" th:selected="${task.priority == T(com.example.TaskManageApp.Task.TaskPriority).LOW}">LOW</option>
+            <option value="MEDIUM" th:selected="${task.priority == T(com.example.TaskManageApp.Task.TaskPriority).MEDIUM}">MEDIUM</option>
+            <option value="HIGH" th:selected="${task.priority == T(com.example.TaskManageApp.Task.TaskPriority).HIGH}">HIGH</option>
         </select>
     </div>
 	
     <div>
         <label for="category">Category:</label>
-        <input type="text" id="category" name="category">
+        <input type="text" id="category" name="category" th:value="${task != null ? task.category : ''}">
     </div>
 				
     <button type="submit">更新</button>

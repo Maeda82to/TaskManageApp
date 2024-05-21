@@ -42,7 +42,8 @@ public class TaskController {
     
     @PostMapping("/{taskId}/modify")
     public String modifyTask(@PathVariable long taskId, Model model) {
-    	model.addAttribute("taskId", taskId);
+    	Task task = taskRepository.findByTaskId(taskId);
+    	model.addAttribute("task", task);
     	return "modifyTask";
     }
     
