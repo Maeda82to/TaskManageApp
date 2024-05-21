@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>タスクの編集</title>
+</head>
+<body>
+
+<h1>タスクの編集</h1>
+
+<form th:action="@{/updateTask}" method="post">
+    <input type="hidden" name="taskId" th:value="${taskId}"> <!-- taskIdをhiddenフィールドで送信 -->
+	<div>
+       <label for="taskName">タスク</label>
+       <input type="text" id="name" name="taskName" required>			
+	</div>
+ 
+	<div>			
+       <label for="taskMemo">メモ</label>
+       <textarea id="memo" name="taskMemo"></textarea>
+	</div>
+
+	<div>
+		<label for="deadline">締め切り</label>
+		<input type="date" id="deadline" name="deadline" required>
+	</div>
+ 
+	<div>
+		<label for="status">Status</label>
+		<select id="status" name="status" required>
+			<option value="NOT_STARTED">NOT_STARTED</option>
+			<option value="IN_PROGRESS">IN_PROGRESS</option>
+			<option value="COMPLETED">COMPLETED</option>
+		</select>
+	</div>
+	
+	<div>
+        <label for="priority">Priority:</label>
+        <select id="priority" name="priority" required>
+            <option value="LOW">LOW</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="HIGH">HIGH</option>
+        </select>
+    </div>
+	
+    <div>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category">
+    </div>
+				
+    <button type="submit">更新</button>
+</form>
+
+</body>
+</html>
