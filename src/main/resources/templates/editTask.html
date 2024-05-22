@@ -1,55 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>タスクの編集</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e5f8f3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h3 {
+            color: #62cbc9;
+        }
+        
+        form {
+            margin-top: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 3px;
+            border: solid 1px #b8e8dc;
+            box-sizing: border-box;
+        }
+        
+        button[type="submit"] {
+            background-color: #62cbc9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #55b0aa;
+        }
+    </style>
 </head>
 <body>
-
-<h1>タスクの編集</h1>
-
-<form th:action="@{/updateTask}" method="post">
-    <input type="hidden" name="taskId" th:value="${taskId}"> <!-- taskIdをhiddenフィールドで送信 -->
-	<div>
-       <label for="taskName">タスク</label>
-       <input type="text" id="taskName" name="taskName" th:value="${task != null ? task.taskName : ''}"required>			
-	</div>
- 
-	<div>			
-       <label for="taskMemo">メモ</label>
-       <textarea id="taskMemo" name="taskMemo" th:text="${task != null ? task.taskMemo : ''}"></textarea>
-	</div>
-
-	<div>
-		<label for="deadline">締め切り</label>
-		<input type="date" id="deadline" name="deadline" th:value="${task != null ? task.deadline : ''}" required>
-	</div>
- 
-	<div>
-		<label for="status">Status</label>
-		<select id="status" name="status" required>
-		    <option value="NOT_STARTED" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).NOT_STARTED}">NOT_STARTED</option>
-		    <option value="IN_PROGRESS" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).IN_PROGRESS}">IN_PROGRESS</option>
-		    <option value="COMPLETED" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).COMPLETED}">COMPLETED</option>
-		</select>
-	</div>
-	
-	<div>
-        <label for="priority">Priority:</label>
-        <select id="priority" name="priority" required>
-            <option value="LOW" th:selected="${task.priority == T(com.example.TaskManageApp.Task.TaskPriority).LOW}">LOW</option>
-            <option value="MEDIUM" th:selected="${task.priority == T(com.example.TaskManageApp.Task.TaskPriority).MEDIUM}">MEDIUM</option>
-            <option value="HIGH" th:selected="${task.priority == T(com.example.TaskManageApp.Task.TaskPriority).HIGH}">HIGH</option>
-        </select>
+    
+    <div class="container">
+        <h3>タスクの編集</h3>
+    
+        <form th:action="@{/updateTask}" method="post">
+            <input type="hidden" name="taskId" th:value="${taskId}">
+            <div>
+                <label for="taskName">タスク</label>
+                <input type="text" id="taskName" name="taskName" th:value="${task != null ? task.taskName : ''}" required>
+            </div>
+         
+            <div>
+                <label for="taskMemo">メモ</label>
+                <textarea id="taskMemo" name="taskMemo" th:text="${task != null ? task.taskMemo : ''}"></textarea>
+            </div>
+        
+            <div>
+                <label for="deadline">締め切り</label>
+                <input type="date" id="deadline" name="deadline" th:value="${task != null ? task.deadline : ''}" required>
+            </div>
+         
+            <div>
+                <label for="status">Status</label>
+                <select id="status" name="status" required>
+                    <option value="NOT_STARTED" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).NOT_STARTED}">NOT_STARTED</option>
+                    <option value="IN_PROGRESS" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).IN_PROGRESS}">IN_PROGRESS</option>
+                    <option value="COMPLETED" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).COMPLETED}">COMPLETED</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="priority">Priority:</label>
+                <select id="priority" name="priority" required>
+                    <option value="LOW" th:selected="${task.priority == T(com.example.TaskManageApp.Task.TaskPriority).LOW}">LOW</option>
+                    <option value="MEDIUM" th:selected="${task.priority == T(com.example.TaskManageApp.Task.TaskPriority).MEDIUM}">MEDIUM</option>
+                    <option value="HIGH" th:selected="${task.priority == T(com.example.TaskManageApp.Task.TaskPriority).HIGH}">HIGH</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" th:value="${task != null ? task.category : ''}">
+            </div>
+                            
+            <button type="submit">更新</button>
+        </form>
     </div>
-	
-    <div>
-        <label for="category">Category:</label>
-        <input type="text" id="category" name="category" th:value="${task != null ? task.category : ''}">
-    </div>
-				
-    <button type="submit">更新</button>
-</form>
-
+    
 </body>
 </html>

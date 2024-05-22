@@ -60,6 +60,7 @@ public class Task {
 		
 	}
 
+	
 
 	public Task(String taskName) {
 		// TODO 自動生成されたコンストラクター・スタブ
@@ -84,4 +85,12 @@ public class Task {
 	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 	        return deadline.format(formatter);
 	    }
+
+
+
+	public Task(String taskName, TaskStatus status, TaskPriority priority) {
+			this.taskName = taskName;
+			this.status = status;
+			this.priority = priority;
+	}
 }

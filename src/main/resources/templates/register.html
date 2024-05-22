@@ -4,22 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e5f8f3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+		.container {
+		    text-align: center;
+		}
+		
+        h1 {
+            color: #62cbc9;
+            text-align: center;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 3px;
+            border: solid 1px #b8e8dc;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #62cbc9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #55b0aa;
+        }
+		
+		
+		a {
+		    color: #62cbc9;
+		    text-decoration: none;
+		}
+		
+		a:hover {
+		    text-decoration: underline;
+		}
+		
+    </style>
 </head>
 <body>
-    <h1>Register</h1>
-    <form th:action="@{/register}" method="post">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div>
-            <button type="submit">Register</button>
-        </div>
-    </form>
+	<div class="container">
+	    <h1>Register</h1>
+	    <form th:action="@{/register}" method="post">
+	        <div>
+	            <label for="username">Username:</label>
+	            <input type="text" id="username" name="username" required>
+	        </div>
+	        <div>
+	            <label for="password">Password:</label>
+	            <input type="password" id="password" name="password" required>
+	        </div>
+	        <div>
+	            <button type="submit">Register</button>
+	        </div>
+	    </form>
+		<p>
+			<a th:href="@{/loginForm}">ログイン画面に戻る</a>
+		</p>
+	</div>
 </body>
 </html>

@@ -22,7 +22,9 @@ public class TaskFormat {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate deadline;
 	
+	
 	private TaskStatus status;
 	private TaskPriority priority;
 	private String category;
+	
 }

@@ -28,6 +28,7 @@ public class TaskController {
     
     @PostMapping("/added")
     public String addTask(@ModelAttribute TaskFormat form, Model model) {
+
         List<Task> taskList = service.addTaskList(form);
         model.addAttribute("taskList", taskList);
         return "redirect:/taskApp";
@@ -54,5 +55,5 @@ public class TaskController {
         model.addAttribute("taskList", taskList);
     	return "redirect:/taskApp";
     }
-    
+   
 }

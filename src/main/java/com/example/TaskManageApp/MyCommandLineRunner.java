@@ -17,14 +17,14 @@ public class MyCommandLineRunner implements CommandLineRunner {
 		
 		System.out.println("コマンドラインランナー実行開始");
 		
-		//デモユーザを追加
-		userService.addUser("demo", "aaaa", RoleName.USER);
-
-//		userService.encodeExistingUserPasswords();
-		
-		taskRepository.save(new Task("task1"));
-		taskRepository.save(new Task("task2"));
-		taskRepository.save(new Task("task3"));
+//		//デモユーザを追加
+//		userService.addUser("demo", "aaaa", RoleName.USER);
+//
+////		userService.encodeExistingUserPasswords();
+//		
+//		taskRepository.save(new Task("task1", TaskStatus.NOT_STARTED, TaskPriority.LOW));
+//		taskRepository.save(new Task("task2", TaskStatus.IN_PROGRESS, TaskPriority.MEDIUM));
+//		taskRepository.save(new Task("task3", TaskStatus.COMPLETED, TaskPriority.HIGH));
 		
 //		List<Task> taskList = taskRepository.findAll();
 		
