@@ -1,8 +1,12 @@
-package com.example.TaskManageApp;
+package com.example.TaskManageApp.runner;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import com.example.TaskManageApp.task.TaskRepository;
+import com.example.TaskManageApp.user.MyUserDetailsService;
 
 @Component
 public class MyCommandLineRunner implements CommandLineRunner {

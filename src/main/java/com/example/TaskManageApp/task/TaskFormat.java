@@ -1,11 +1,11 @@
-package com.example.TaskManageApp;
+package com.example.TaskManageApp.task;
 
 import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.example.TaskManageApp.Task.TaskPriority;
-import com.example.TaskManageApp.Task.TaskStatus;
+import com.example.TaskManageApp.task.Task.TaskPriority;
+import com.example.TaskManageApp.task.Task.TaskStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.example.TaskManageApp;
+package com.example.TaskManageApp.task;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.TaskManageApp;
+package com.example.TaskManageApp.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

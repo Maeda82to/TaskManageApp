@@ -1,9 +1,11 @@
-package com.example.TaskManageApp;
+package com.example.TaskManageApp.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.TaskManageApp.task.RoleName;
 
 @Controller
 public class RegisterController {

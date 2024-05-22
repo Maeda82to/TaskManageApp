@@ -1,4 +1,4 @@
-package com.example.TaskManageApp;
+package com.example.TaskManageApp.user;
 
 import java.util.List;
 
@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.example.TaskManageApp.task.RoleName;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService{
