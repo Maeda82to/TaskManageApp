@@ -27,20 +27,11 @@
  
 	<div>
 		<label for="status">Status</label>
-<!--		<select id="status" name="status" required>-->
-<!--			<option value="NOT_STARTED" th:selected="${task.status == 'NOT_STARTED'}">NOT_STARTED</option>-->
-<!--			<option value="IN_PROGRESS" th:selected="${task.status == 'IN_PROGRESS'}">IN_PROGRESS</option>-->
-<!--			<option value="COMPLETED" th:selected="${task.status == 'COMPLETED'}">COMPLETED</option>-->
-<!--		</select>-->
-		
 		<select id="status" name="status" required>
 		    <option value="NOT_STARTED" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).NOT_STARTED}">NOT_STARTED</option>
 		    <option value="IN_PROGRESS" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).IN_PROGRESS}">IN_PROGRESS</option>
 		    <option value="COMPLETED" th:selected="${task.status == T(com.example.TaskManageApp.Task.TaskStatus).COMPLETED}">COMPLETED</option>
 		</select>
-
-
-
 	</div>
 	
 	<div>

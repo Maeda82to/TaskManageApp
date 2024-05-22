@@ -40,11 +40,11 @@ public class TaskController {
         return "redirect:/taskApp";
     }
     
-    @PostMapping("/{taskId}/modify")
+    @PostMapping("/{taskId}/edit")
     public String modifyTask(@PathVariable long taskId, Model model) {
     	Task task = taskRepository.findByTaskId(taskId);
     	model.addAttribute("task", task);
-    	return "modifyTask";
+    	return "editTask";
     }
     
     @PostMapping("/updateTask")

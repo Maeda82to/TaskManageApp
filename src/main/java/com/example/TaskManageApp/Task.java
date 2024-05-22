@@ -2,11 +2,13 @@ package com.example.TaskManageApp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -63,9 +65,23 @@ public class Task {
 		// TODO 自動生成されたコンストラクター・スタブ
 		setTaskName(taskName);
 	}
-//	//nameとmemoを受け取るコンストラクタ
-//	public Task(TaskFormat form) {
-//		this.taskName = form.name;
-//	}
-//	
+	
+	@Transient
+	 public String getFormattedCreatedAt() {
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+	        return createdAt.format(formatter);
+	    }
+
+	@Transient
+	 public String getFormattedUpdatedAt() {
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+	        return updatedAt.format(formatter);
+	    }
+	
+
+	@Transient
+	 public String getFormattedDeadline() {
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	        return deadline.format(formatter);
+	    }
 }

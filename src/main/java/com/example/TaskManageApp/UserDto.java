@@ -1,8 +1,6 @@
 package com.example.TaskManageApp;
 
 
-//入力チェックをするためのツールをインポートしています。
-
 
 public class UserDto {  // ユーザーのデータを扱うためのクラス
 

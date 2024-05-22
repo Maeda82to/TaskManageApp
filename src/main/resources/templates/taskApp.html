@@ -3,6 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <title>タスク管理アプリ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+	
+	table{
+	  border-collapse:separate;
+	  border-spacing: 5px;
+	  width: 100%;
+	}
+	
+	table th,table td{
+	  border-radius: 5px;
+	  text-align: center;
+	  padding: 10px 0;
+	}
+	
+	table th{
+	  background-color: #62cbc9;
+	  color: white;
+	  border:solid 1px #b8e8dc;
+	}
+	
+	table td{
+	  background-color: #e5f8f3;
+	  border:solid 1px #b8e8dc;
+	}
+	
+	.status-not-started { color: red; }
+	.status-in-progress { color: orange; }
+	.status-completed { color: green; }
+	
+	.priority-low { color: red; }
+	.priority-medium { color: orange; }
+	.priority-high { color: green; }
+	
+</style>
 </head>
 <body>
     
@@ -58,42 +93,57 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Memo</th>
-            <th>deadline</th>
-            <th>createdAt</th>
-            <th>updatedAt</th>
-            <th>status</th>
-            <th>priority</th>
-            <th>category</th>
-            <th>delete</th>
+<!--           <th>Id</th>-->
+            <th>タスク</th>
+            <th>メモ</th>
+            <th>〆切</th>
+            <th>作成日時</th>
+            <th>更新日時</th>
+            <th>状況</th>
+            <th>優先度</th>
+            <th>分類</th>
+            <th>削除</th>
+			<th>編集</th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="task :${taskList}">
-            <td th:text="${task.taskId}"></td>
+<!--            <td th:text="${task.taskId}"></td>-->
             <td th:text="${task.taskName}"></td>
             <td th:text="${task.taskMemo}"></td>
-            <td th:text="${task.deadline}"></td>
-            <td th:text="${task.createdAt}"></td>
-            <td th:text="${task.updatedAt}"></td>
-            <td th:text="${task.status}"></td>
-            <td th:text="${task.priority}"></td>
+            <td th:text="${task.formattedDeadline}"></td>
+            <td th:text="${task.formattedCreatedAt}"></td>
+            <td th:text="${task.formattedUpdatedAt}"></td>
+			<td th:text="${task.status}" 
+                th:classappend=	"${task.status.name()} == 'NOT_STARTED' ? 'status-not-started' : 
+			                      (${task.status.name()} == 'IN_PROGRESS' ? 'status-in-progress' : 
+			                      (${task.status.name()} == 'COMPLETED' ? 'status-completed' : ''))">
+            </td>
+            <td th:text="${task.priority}"
+				th:classappend="${task.priority.name()} == 'LOW' ? 'priority-low' :
+								(${task.priority.name()} == 'MEDIUM' ? 'priority-medium' :
+								(${task.priority.name()} == 'HIGH' ? 'priority-high' : ''))">
+			</td>
             <td th:text="${task.category}"></td>
-            <td>
-               <form th:action="@{/{taskId}/delete(taskId=${task.taskId})}" method="post">
-                   <input type="submit" value="削除">
-               </form>
-            </td>
-            <td>
-               <form th:action="@{/{taskId}/modify(taskId=${task.taskId})}" method="post">
-                   <input type="submit" value="編集">
-               </form>
-            </td>
+			<td>
+			    <form th:action="@{/{taskId}/delete(taskId=${task.taskId})}" method="post">
+			        <button type="submit" style="background: none; border: none; cursor: pointer;">
+			            <i class="fas fa-trash-alt"></i>
+			        </button>
+			    </form>
+			</td>
+			<td>
+			    <form th:action="@{/{taskId}/edit(taskId=${task.taskId})}" method="post">
+			        <button type="submit" style="background: none; border: none; cursor: pointer;">
+			            <i class="fas fa-edit"></i>
+			        </button>
+			    </form>
+			</td>
           </tr>
         </tbody>
       </table>
     </div>
+	
+	<script src="/js/script.js"></script>
 </body>
 </html>

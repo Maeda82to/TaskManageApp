@@ -63,6 +63,7 @@ public class MyUserDetailsService implements UserDetailsService{
 	        user.setRoleName(roleName);
 	        userRepository.save(user);
 	    }
+	 
 	//既存DBデータのパスワードエンコード処理
 	public void encodeExistingUserPasswords() {
         List<User> users = userRepository.findAll();
