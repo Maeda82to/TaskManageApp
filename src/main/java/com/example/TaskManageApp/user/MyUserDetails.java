@@ -7,7 +7,9 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class MyUserDetails implements UserDetails{
-
+//UserDetails...認証処理で必要になる資格情報とユーザの状態を提供するインタフェース
+	
+	
 	private final User user;
 	
 	public MyUserDetails(User user) {
@@ -22,6 +24,8 @@ public class MyUserDetails implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities(){
 		return AuthorityUtils.createAuthorityList("ROLE_" + this.user.getRoleName().name());
 	}
+	// ユーザの権限(役割)を返すインタフェースの抽象メソッド。
+	// 役割はenum型で宣言している
 	
 	
 	@Override

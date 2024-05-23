@@ -10,10 +10,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.TaskManageApp.task.RoleName;
-
 @Service
 public class MyUserDetailsService implements UserDetailsService{
+	//資格情報とユーザの状態をデータストアから取得するためのインタフェース
+	//DBからアカウント情報を検索してUserDetailsインスタンス生成
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
@@ -30,22 +30,27 @@ public class MyUserDetailsService implements UserDetailsService{
 		
 			User user = userRepository.findByUserId(username);
 //			.orElseThrow(()-> new UsernameNotFoundException(username + " is not found."));
-			 
 			if (user == null) {
 		            throw new UsernameNotFoundException("User not found"); // ユーザーが見つからない場合、例外をスローします
 		        }
+			//DBからアカウント情報を検索
+			
 			
 			System.out.println(user);
 			
 			return new MyUserDetails(user);
+			//アカウント情報が見つかったらインスタンスを生成して返す
 	}
 	
-	 //新たにメソッドを追加します
+	
+	
     public User findByUsername(String username) {
-        return userRepository.findByUserId(username); // ユーザー名でユーザーを検索し返します
+        return userRepository.findByUserId(username); // ユーザー名でユーザーを検索し返す
     }
 
-    @Transactional // トランザクションを開始します。メソッドが終了したらトランザクションがコミットされます。
+    
+    
+    @Transactional // トランザクションを開始。メソッドが終了したらトランザクションがコミットされる。
     public void save(UserDto userDto) {
         // UserDtoからUserへの変換
         User user = new User();
@@ -54,8 +59,10 @@ public class MyUserDetailsService implements UserDetailsService{
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
         // データベースへの保存
-        userRepository.save(user); // UserRepositoryを使ってユーザーをデータベースに保存します
+        userRepository.save(user); // UserRepositoryを使ってユーザーをデータベースに保存
     }
+    
+    
 
 	//データ追加
 	 public void addUser(String userId, String rawPassword, RoleName roleName) {
@@ -65,6 +72,7 @@ public class MyUserDetailsService implements UserDetailsService{
 	        user.setRoleName(roleName);
 	        userRepository.save(user);
 	    }
+	 
 	 
 	//既存DBデータのパスワードエンコード処理
 	public void encodeExistingUserPasswords() {

@@ -2,8 +2,6 @@ package com.example.TaskManageApp.user;
 
 import java.io.Serializable;
 
-import com.example.TaskManageApp.task.RoleName;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

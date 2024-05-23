@@ -67,6 +67,7 @@ public class Task {
 		setTaskName(taskName);
 	}
 	
+	//DBに保存しないフィールドに付与するアノテーション
 	@Transient
 	 public String getFormattedCreatedAt() {
 	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");

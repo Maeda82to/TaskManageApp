@@ -10,7 +10,7 @@ public class UserDto {  // ユーザーのデータを扱うためのクラス
  private String password;  // パスワードを保存するための場所
 
 
- // 以下は各値を取得するためのメソッド（ゲッター）です。
+ // 以下は各値を取得するためのメソッド（ゲッター）
  public String getUsername() {
      return username;  // ユーザー名を返す
  }
